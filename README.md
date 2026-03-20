@@ -12,7 +12,7 @@ where \( S(n) \) denotes the sum of the decimal digits of a positive integer \( 
 
 ## Overview
 
-At first glance, one might expect a direct relationship between the digit sum \( S(n) \) and modular arithmetic modulo \( p \). However, this is generally not the case.
+This work does **not** claim a general identity relating digit sums and modular arithmetic.
 
 Instead, the congruence
 
@@ -20,29 +20,35 @@ Instead, the congruence
 2S(n) - p \equiv n \pmod{p}
 \]
 
-should be interpreted as a **selection condition**: for each fixed modulus \( p \), it defines a subset of integers satisfying the relation.
+is studied as a **selection condition**: for each fixed modulus \( p \), it defines a subset of integers satisfying the relation.
 
 ---
 
-## Main idea
+## Reformulation
 
-Rewriting the congruence gives
+Since \( p \equiv 0 \pmod{p} \), the congruence is equivalent to
 
 \[
 2S(n) \equiv n \pmod{p}.
 \]
 
-This shows that the problem depends on how the digit sum \( S(n) \) behaves modulo \( p \).
+Thus, the problem reduces to comparing the digit sum \( S(n) \) with \( n \) modulo \( p \).
 
-A key classical fact is:
+---
+
+## Digit sum and modular arithmetic
+
+A classical property of the decimal representation is:
 
 \[
 n \equiv S(n) \pmod{9},
 \]
 
-which follows from the decimal representation (\(10 \equiv 1 \mod 9\)).
+which follows from the fact that \( 10 \equiv 1 \pmod{9} \).
 
-This relation naturally extends only to moduli dividing 9 (such as \( p = 3 \) or \( p = 9 \)). For general \( p \), no direct correspondence exists.
+As a consequence, this relation extends naturally to moduli dividing 9 (such as \( p = 3 \) or \( p = 9 \)).
+
+For general values of \( p \), no simple congruence directly relates \( S(n) \) and \( n \mod p \).
 
 ---
 
@@ -51,10 +57,16 @@ This relation naturally extends only to moduli dividing 9 (such as \( p = 3 \) o
 For \( p = 3 \), we have:
 
 \[
-S(n) \equiv n \pmod{3},
+S(n) \equiv n \pmod{3}.
 \]
 
-so the condition becomes
+Substituting into the condition
+
+\[
+2S(n) \equiv n \pmod{3},
+\]
+
+we obtain
 
 \[
 2n \equiv n \pmod{3},
@@ -66,7 +78,13 @@ which implies
 n \equiv 0 \pmod{3}.
 \]
 
-Hence, the congruence holds exactly for multiples of 3.
+Therefore, the congruence
+
+\[
+2S(n) - 3 \equiv n \pmod{3}
+\]
+
+holds if and only if \( n \) is a multiple of 3.
 
 ---
 
@@ -80,11 +98,41 @@ A_p = \{ n \in \mathbb{N} : 2S(n) - p \equiv n \pmod{p} \}.
 
 These are referred to as **active integers** with respect to \( p \).
 
-The structure of \( A_p \) depends strongly on \( p \):
+The structure of \( A_p \) depends strongly on the modulus:
 
 - for \( p = 3 \), \( A_p \) consists of multiples of 3;
 - for moduli related to 9, digit sums interact naturally with congruences;
-- for general \( p \), the behavior appears less regular.
+- for general \( p \), the structure of \( A_p \) appears more irregular.
+
+---
+
+## Alternative formulation
+
+Writing \( n \) in base 10 as
+
+\[
+n = \sum_{i=0}^{k} d_i 10^i,
+\]
+
+we have
+
+\[
+S(n) = \sum_{i=0}^{k} d_i.
+\]
+
+The condition
+
+\[
+2S(n) - n \equiv 0 \pmod{p}
+\]
+
+can then be rewritten as
+
+\[
+\sum_{i=0}^{k} d_i (2 - 10^i) \equiv 0 \pmod{p}.
+\]
+
+This provides a digit-wise interpretation of the condition.
 
 ---
 
@@ -97,12 +145,12 @@ The structure of \( A_p \) depends strongly on \( p \):
 
 ## Remarks
 
-This note is exploratory in nature. The goal is not to claim a general identity, but to investigate a family of congruence conditions involving digit sums.
+This note is exploratory in nature. The goal is to study a family of congruence conditions involving digit sums, rather than to establish a general identity.
 
-Possible directions for further work:
+Possible directions for further work include:
 
-- computational exploration of \( A_p \) for specific values of \( p \);
-- classification of patterns for different moduli;
+- computational exploration of \( A_p \) for specific moduli;
+- classification of residue classes satisfying the condition;
 - comparison with known integer sequences.
 
 ---
