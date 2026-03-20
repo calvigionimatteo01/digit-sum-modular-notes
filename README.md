@@ -1,158 +1,121 @@
 # Digit Sum and Modular Congruences
 
-This repository contains a short mathematical note studying the congruence
+This repository contains a short mathematical note studying the congruence:
 
-\[
-2S(n) - p \equiv n \pmod{p},
-\]
+2 * S(n) - p ≡ n (mod p)
 
-where \( S(n) \) denotes the sum of the decimal digits of a positive integer \( n \).
+where S(n) is the sum of the decimal digits of a positive integer n.
 
 ---
 
 ## Overview
 
-This work does **not** claim a general identity relating digit sums and modular arithmetic.
+This is NOT a general identity.
 
 Instead, the congruence
 
-\[
-2S(n) - p \equiv n \pmod{p}
-\]
+2 * S(n) - p ≡ n (mod p)
 
-is studied as a **selection condition**: for each fixed modulus \( p \), it defines a subset of integers satisfying the relation.
+is studied as a **selection condition**: for each fixed modulus p, it defines a subset of integers satisfying the relation.
 
 ---
 
 ## Reformulation
 
-Since \( p \equiv 0 \pmod{p} \), the congruence is equivalent to
+Since p ≡ 0 (mod p), the condition is equivalent to:
 
-\[
-2S(n) \equiv n \pmod{p}.
-\]
+2 * S(n) ≡ n (mod p)
 
-Thus, the problem reduces to comparing the digit sum \( S(n) \) with \( n \) modulo \( p \).
+So the problem reduces to comparing the digit sum S(n) with n modulo p.
 
 ---
 
 ## Digit sum and modular arithmetic
 
-A classical property of the decimal representation is:
+A classical fact:
 
-\[
-n \equiv S(n) \pmod{9},
-\]
+n ≡ S(n) (mod 9)
 
-which follows from the fact that \( 10 \equiv 1 \pmod{9} \).
+This comes from the decimal system (10 ≡ 1 mod 9).
 
-As a consequence, this relation extends naturally to moduli dividing 9 (such as \( p = 3 \) or \( p = 9 \)).
+This relation extends naturally only to moduli dividing 9 (like p = 3 or p = 9).
 
-For general values of \( p \), no simple congruence directly relates \( S(n) \) and \( n \mod p \).
+For general p, there is no simple relation between S(n) and n mod p.
 
 ---
 
-## Example: \( p = 3 \)
+## Example: p = 3
 
-For \( p = 3 \), we have:
+For p = 3:
 
-\[
-S(n) \equiv n \pmod{3}.
-\]
+S(n) ≡ n (mod 3)
 
-Substituting into the condition
+So:
 
-\[
-2S(n) \equiv n \pmod{3},
-\]
+2 * S(n) ≡ n (mod 3)
+→ 2n ≡ n (mod 3)
+→ n ≡ 0 (mod 3)
 
-we obtain
+Conclusion:
 
-\[
-2n \equiv n \pmod{3},
-\]
+2 * S(n) - 3 ≡ n (mod 3)
 
-which implies
-
-\[
-n \equiv 0 \pmod{3}.
-\]
-
-Therefore, the congruence
-
-\[
-2S(n) - 3 \equiv n \pmod{3}
-\]
-
-holds if and only if \( n \) is a multiple of 3.
+holds if and only if n is a multiple of 3.
 
 ---
 
 ## Active integers
 
-For each modulus \( p \), define the set
+For each p, define:
 
-\[
-A_p = \{ n \in \mathbb{N} : 2S(n) - p \equiv n \pmod{p} \}.
-\]
+A_p = { n in N : 2 * S(n) - p ≡ n (mod p) }
 
-These are referred to as **active integers** with respect to \( p \).
+These are called **active integers**.
 
-The structure of \( A_p \) depends strongly on the modulus:
+Behavior depends on p:
 
-- for \( p = 3 \), \( A_p \) consists of multiples of 3;
-- for moduli related to 9, digit sums interact naturally with congruences;
-- for general \( p \), the structure of \( A_p \) appears more irregular.
+- p = 3 → multiples of 3
+- p related to 9 → structured behavior
+- general p → more irregular
 
 ---
 
 ## Alternative formulation
 
-Writing \( n \) in base 10 as
+Write n in base 10:
 
-\[
-n = \sum_{i=0}^{k} d_i 10^i,
-\]
+n = sum of d_i * 10^i  
+S(n) = sum of d_i
 
-we have
+Then:
 
-\[
-S(n) = \sum_{i=0}^{k} d_i.
-\]
+2 * S(n) - n ≡ 0 (mod p)
 
-The condition
+becomes:
 
-\[
-2S(n) - n \equiv 0 \pmod{p}
-\]
-
-can then be rewritten as
-
-\[
-\sum_{i=0}^{k} d_i (2 - 10^i) \equiv 0 \pmod{p}.
-\]
-
-This provides a digit-wise interpretation of the condition.
+sum of d_i * (2 - 10^i) ≡ 0 (mod p)
 
 ---
 
 ## Repository contents
 
-- `note.tex` — LaTeX source of the note  
-- `note.pdf` — compiled version  
+- note.tex → LaTeX source  
+- note.pdf → compiled note  
 
 ---
 
 ## Remarks
 
-This note is exploratory in nature. The goal is to study a family of congruence conditions involving digit sums, rather than to establish a general identity.
+This is an exploratory note.
 
-Possible directions for further work include:
+Goal: study a condition involving digit sums and modular arithmetic, not claim a general identity.
 
-- computational exploration of \( A_p \) for specific moduli;
-- classification of residue classes satisfying the condition;
-- comparison with known integer sequences.
+Possible extensions:
+
+- compute A_p for specific p
+- classify solutions
+- compare with known sequences
 
 ---
 
-**Author:** Matteo Calvigioni
+Author: Matteo Calvigioni
