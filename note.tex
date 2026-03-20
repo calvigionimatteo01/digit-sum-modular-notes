@@ -1,0 +1,236 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+
+\title{A Simple Derivation from a Block Intuition to a Periodic Congruence Formula}
+\author{Matteo Calvigioni}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+\textbf{Premise.}
+The starting point was not a theorem, but only a simple \emph{block intuition}. 
+One may look at an object of the form
+\[
+L\,n,
+\]
+where \(L\) is a letter and \(n\) is a decimal block of digits, and associate to the letter a positive integer \(p\).
+From this informal point of view, one is led to consider a decomposition into three parts:
+a left block \(p\), a middle block \(n\), and a right block \(n \bmod p\).
+This suggests the identity
+\[
+2S(n)=p+(n \bmod p),
+\]
+where \(S(n)\) denotes the sum of the decimal digits of \(n\).
+
+\medskip
+
+\noindent
+From here, one may forget the original block picture and study the relation on its own.
+
+\section*{Step 1: From the identity to the congruence}
+
+Assume
+\[
+2S(n)=p+(n \bmod p).
+\]
+Reducing both sides modulo \(p\), we get
+\[
+2S(n)\equiv p+(n \bmod p)\pmod p.
+\]
+Since
+\[
+p\equiv 0 \pmod p
+\]
+and, by definition,
+\[
+n \bmod p \equiv n \pmod p,
+\]
+it follows that
+\[
+2S(n)\equiv n \pmod p.
+\]
+
+Thus the original identity implies the congruence
+\[
+2S(n)\equiv n \pmod p.
+\]
+
+\section*{Step 2: Explicit form of the congruence}
+
+By the definition of congruence modulo \(p\),
+\[
+2S(n)\equiv n \pmod p
+\]
+is equivalent to the existence of some integer \(k\in\mathbb{Z}\) such that
+\[
+2S(n)-n=pk.
+\]
+This is only the explicit form of the same congruence.
+
+\section*{Step 3: Decimal expansion}
+
+From now on, we assume that we are working in base \(10\).
+
+Let
+\[
+n=d_0+d_1 10+d_2 10^2+\cdots+d_m 10^m,
+\]
+where each digit satisfies
+\[
+d_i\in\{0,1,\dots,9\}.
+\]
+Then the sum of the digits is
+\[
+S(n)=d_0+d_1+\cdots+d_m.
+\]
+
+Substituting this into the congruence
+\[
+2S(n)\equiv n \pmod p,
+\]
+we obtain
+\[
+2(d_0+d_1+\cdots+d_m)\equiv d_0+d_1 10+d_2 10^2+\cdots+d_m 10^m \pmod p.
+\]
+Bringing everything to the left-hand side gives
+\[
+\sum_{i=0}^m d_i(2-10^i)\equiv 0 \pmod p.
+\]
+Equivalently,
+\[
+2S(n)-n=\sum_{i=0}^m d_i(2-10^i).
+\]
+
+So the original congruence may be rewritten as
+\[
+\sum_{i=0}^m d_i(2-10^i)\equiv 0 \pmod p.
+\]
+
+\section*{Step 4: Periodicity of \(10^i \pmod p\)}
+
+Now assume
+\[
+\gcd(10,p)=1.
+\]
+Then \(10\) is invertible modulo \(p\). Hence the powers
+\[
+1,10,10^2,10^3,\dots
+\]
+belong to a finite multiplicative system modulo \(p\), so two of them must eventually coincide.
+That is, there exist integers \(r>s\geq 0\) such that
+\[
+10^r\equiv 10^s \pmod p.
+\]
+Since \(10^s\) is invertible modulo \(p\), we may cancel it and obtain
+\[
+10^{r-s}\equiv 1 \pmod p.
+\]
+Therefore there exists a least positive integer \(t\) such that
+\[
+10^t\equiv 1 \pmod p.
+\]
+This integer \(t\) is the period of the sequence
+\[
+10^i \pmod p,
+\]
+in the sense that
+\[
+10^{i+t}\equiv 10^i \pmod p
+\qquad\text{for all } i\geq 0.
+\]
+
+\section*{Step 5: Periodicity of \(2-10^i \pmod p\)}
+
+Since
+\[
+10^{i+t}\equiv 10^i \pmod p,
+\]
+we immediately get
+\[
+2-10^{i+t}\equiv 2-10^i \pmod p
+\qquad\text{for all } i\geq 0.
+\]
+So the sequence
+\[
+(2-10^i)\pmod p
+\]
+is also periodic (with period dividing \(t\), and certainly with period \(t\)).
+
+\section*{Step 6: Grouping the digits by residue classes modulo \(t\)}
+
+Because the coefficients \(2-10^i\) repeat modulo \(t\), one may group the indices according to their residue classes modulo \(t\).
+
+For each \(r\in\{0,1,\dots,t-1\}\), define
+\[
+C_r(n):=\sum_{\substack{0\leq i\leq m\\ i\equiv r \;(\mathrm{mod}\; t)}} d_i.
+\]
+This is the sum of the digits of \(n\) whose positions are congruent to \(r\) modulo \(t\).
+
+Since
+\[
+10^i\equiv 10^r \pmod p \qquad \text{whenever } i\equiv r \pmod t,
+\]
+we also have
+\[
+2-10^i\equiv 2-10^r \pmod p.
+\]
+Hence
+\[
+\sum_{i=0}^m d_i(2-10^i)
+\equiv
+\sum_{r=0}^{t-1}(2-10^r)\!\!\sum_{\substack{0\leq i\leq m\\ i\equiv r\;(\mathrm{mod}\; t)}} d_i
+\pmod p.
+\]
+By the definition of \(C_r(n)\), this becomes
+\[
+\sum_{i=0}^m d_i(2-10^i)
+\equiv
+\sum_{r=0}^{t-1}(2-10^r)C_r(n)
+\pmod p.
+\]
+
+Since the original congruence is equivalent to
+\[
+\sum_{i=0}^m d_i(2-10^i)\equiv 0 \pmod p,
+\]
+we finally obtain the formula
+\[
+\boxed{
+\sum_{r=0}^{t-1}(2-10^r)C_r(n)\equiv 0 \pmod p
+}
+\]
+where \(t\) is the period of \(10^i \pmod p\), under the assumption \(\gcd(10,p)=1\).
+
+\section*{Conclusion}
+
+Starting from an informal block intuition, one is naturally led to the identity
+\[
+2S(n)=p+(n \bmod p),
+\]
+then to the congruence
+\[
+2S(n)\equiv n \pmod p,
+\]
+then to its explicit form
+\[
+2S(n)-n=pk,
+\]
+and finally, after writing \(n\) in decimal notation, to
+\[
+\sum_{i=0}^m d_i(2-10^i)\equiv 0 \pmod p.
+\]
+Under the additional assumption \(\gcd(10,p)=1\), the periodicity of \(10^i \pmod p\) allows us to group the digits by residue classes modulo the period \(t\), obtaining the final formula
+\[
+\sum_{r=0}^{t-1}(2-10^r)C_r(n)\equiv 0 \pmod p.
+\]
+
+\medskip
+
+\noindent
+This argument is elementary, but it already shows that the original relation is controlled by a periodic structure coming from the powers of \(10\) modulo \(p\).
+
+\end{document}
