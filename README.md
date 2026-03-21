@@ -1,121 +1,52 @@
-# Digit Sum and Modular Congruences
+Digit Sum Modular Notes
 
-This repository contains a short mathematical note studying the congruence:
+This repository contains notes exploring a relation between the digit sum of an integer and modular arithmetic.
 
-2 * S(n) - p ≡ n (mod p)
+Main idea
 
-where S(n) is the sum of the decimal digits of a positive integer n.
-
----
-
-## Overview
-
-This is NOT a general identity.
-
-Instead, the congruence
+We investigate expressions of the form:
 
 2 * S(n) - p ≡ n (mod p)
 
-is studied as a **selection condition**: for each fixed modulus p, it defines a subset of integers satisfying the relation.
+where:
 
----
+- S(n) is the sum of the digits of n (in base 10)
+- p is a fixed modulus
 
-## Reformulation
+Important remark
 
-Since p ≡ 0 (mod p), the condition is equivalent to:
+This relation does not hold for all integers n.
 
-2 * S(n) ≡ n (mod p)
+A simple counterexample is:
 
-So the problem reduces to comparing the digit sum S(n) with n modulo p.
+- n = 2
+- p = 3
 
----
+In this case:
 
-## Digit sum and modular arithmetic
-
-A classical fact:
-
-n ≡ S(n) (mod 9)
-
-This comes from the decimal system (10 ≡ 1 mod 9).
-
-This relation extends naturally only to moduli dividing 9 (like p = 3 or p = 9).
-
-For general p, there is no simple relation between S(n) and n mod p.
-
----
-
-## Example: p = 3
-
-For p = 3:
-
-S(n) ≡ n (mod 3)
+- S(2) = 2
+- 2 * S(n) - p = 4 - 3 = 1
+- n mod p = 2
 
 So:
+1 ≠ 2 (mod 3)
 
-2 * S(n) ≡ n (mod 3)
-→ 2n ≡ n (mod 3)
-→ n ≡ 0 (mod 3)
+This shows that the initial relation is not universally valid, and any correct formulation must include additional conditions or restrictions.
 
-Conclusion:
+Contents
 
-2 * S(n) - 3 ≡ n (mod 3)
+- note.tex → LaTeX source file of the notes
+- note(1).pdf → compiled version (readable)
 
-holds if and only if n is a multiple of 3.
+Status
 
----
+This work is exploratory and may contain inaccuracies or incomplete generalizations.
+It is shared as a starting point for discussion and further investigation.
 
-## Active integers
+Author
 
-For each p, define:
+Matteo Calvigioni
 
-A_p = { n in N : 2 * S(n) - p ≡ n (mod p) }
+Notes
 
-These are called **active integers**.
-
-Behavior depends on p:
-
-- p = 3 → multiples of 3
-- p related to 9 → structured behavior
-- general p → more irregular
-
----
-
-## Alternative formulation
-
-Write n in base 10:
-
-n = sum of d_i * 10^i  
-S(n) = sum of d_i
-
-Then:
-
-2 * S(n) - n ≡ 0 (mod p)
-
-becomes:
-
-sum of d_i * (2 - 10^i) ≡ 0 (mod p)
-
----
-
-## Repository contents
-
-- note.tex → LaTeX source  
-- note.pdf → compiled note  
-
----
-
-## Remarks
-
-This is an exploratory note.
-
-Goal: study a condition involving digit sums and modular arithmetic, not claim a general identity.
-
-Possible extensions:
-
-- compute A_p for specific p
-- classify solutions
-- compare with known sequences
-
----
-
-Author: Matteo Calvigioni
+If you are interested in modular arithmetic or digit-based properties of integers, feel free to take inspiration or suggest improvements.
