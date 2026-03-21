@@ -1,0 +1,133 @@
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[a4paper,margin=2.7cm]{geometry}
+\usepackage{microtype}
+\usepackage{mathtools,amssymb,amsthm}
+
+\title{On a Congruence Involving the Decimal Digit Sum}
+\author{Matteo Calvigioni}
+\date{}
+
+\newcommand{\N}{\mathbb{N}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We consider the congruence
+\[
+2S(n) - p \equiv n \pmod{p},
+\]
+where \(S(n)\) denotes the sum of the decimal digits of \(n\).
+This relation is not a universal identity; rather, for each fixed modulus \(p\),
+it defines a subset of integers satisfying the congruence.
+\end{abstract}
+
+\section{Introduction}
+
+Let \(S(n)\) denote the sum of the decimal digits of a positive integer \(n\).
+For a fixed integer \(p \ge 2\), we study the congruence
+\[
+2S(n) - p \equiv n \pmod{p}.
+\]
+Since \(p \equiv 0 \pmod{p}\), this is equivalent to
+\[
+2S(n) \equiv n \pmod{p}.
+\]
+Thus, the problem reduces to comparing the digit sum \(S(n)\) with \(n\) modulo \(p\).
+
+\section{A classical fact on the digit sum}
+
+Let \(n\) be a positive integer. We write its decimal (base-10) positional representation as
+\[
+n = \sum_{i=0}^{k} a_i 10^i, \qquad a_i \in \{0,1,\dots,9\}.
+\]
+We define the digit sum of \(n\) as
+\[
+S(n) = \sum_{i=0}^{k} a_i.
+\]
+
+A classical property is that
+\[
+n \equiv S(n) \pmod{9}.
+\]
+
+Indeed, we can write
+\[
+n - S(n) = \sum_{i=0}^{k} a_i (10^i - 1),
+\]
+and since \(10 \equiv 1 \pmod{9}\), it follows that \(10^i \equiv 1 \pmod{9}\) for all \(i\), hence each term is divisible by 9, and therefore
+\[
+n \equiv S(n) \pmod{9}.
+\]
+
+\section{Example: the case \(p = 3\)}
+
+Since \(3 \mid 9\), we have
+\[
+S(n) \equiv n \pmod{3}.
+\]
+Substituting this into
+\[
+2S(n) \equiv n \pmod{3},
+\]
+we obtain
+\[
+2n \equiv n \pmod{3},
+\]
+and therefore
+\[
+n \equiv 0 \pmod{3}.
+\]
+
+So, in the case \(p = 3\), the original congruence holds exactly for the multiples of \(3\):
+\[
+2S(n) - 3 \equiv n \pmod{3}
+\quad \Longleftrightarrow \quad
+3 \mid n.
+\]
+
+\section{Active integers}
+
+\begin{definition}
+For a fixed modulus \(p\), define
+\[
+A_p \coloneqq \{\, n \in \N : 2S(n) - p \equiv n \pmod{p} \,\}.
+\]
+We call the elements of \(A_p\) the \emph{active integers} with respect to \(p\).
+\end{definition}
+
+\section{Discussion}
+
+The congruence
+\[
+2S(n) - p \equiv n \pmod{p}
+\]
+should therefore be viewed as a selection condition rather than as a general identity.
+
+Its behavior depends strongly on the modulus \(p\):
+\begin{itemize}
+    \item for \(p = 3\), the active integers are precisely the multiples of \(3\);
+    \item for moduli related to \(9\), the digit sum naturally interacts with congruences;
+    \item for general \(p\), the structure of \(A_p\) appears less regular and may be explored computationally.
+\end{itemize}
+
+\section{Conclusion}
+
+For each fixed modulus \(p\), the condition
+\[
+2S(n) - p \equiv n \pmod{p}
+\]
+defines a subset \(A_p \subseteq \N\).
+The example \(p=3\) shows that this subset can sometimes be described explicitly.
+A natural continuation is to study the structure of \(A_p\) for other values of \(p\).
+
+\end{document}
