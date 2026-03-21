@@ -36,7 +36,7 @@ This shows that the initial relation is not universally valid, and any correct f
 Contents
 
 - note.tex → LaTeX source file of the notes
-- note(1).pdf → compiled version (readable)
+- note.pdf → compiled version (readable)
 
 Status
 
