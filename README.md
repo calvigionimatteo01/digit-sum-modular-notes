@@ -1,52 +1,78 @@
-Digit Sum Modular Notes
+# Digit Sum Modular Notes
 
-This repository contains notes exploring a relation between the digit sum of an integer and modular arithmetic.
+A small personal exploration of digit sums and modular arithmetic.
 
-Main idea
+## Overview
 
-We investigate expressions of the form:
+Let `S(n)` denote the sum of the decimal digits of a positive integer `n`.
 
-2 * S(n) - p ≡ n (mod p)
+A classical fact is:
 
-where:
+- `n ≡ S(n) (mod 9)`
 
-- S(n) is the sum of the digits of n (in base 10)
-- p is a fixed modulus
+This follows by writing `n` in decimal positional form:
 
-Important remark
+- `n = a_0 + a_1*10 + a_2*10^2 + ... + a_k*10^k`
 
-This relation does not hold for all integers n.
+with decimal digits `a_i in {0,1,...,9}`, so that
 
-A simple counterexample is:
+- `S(n) = a_0 + a_1 + ... + a_k`
 
-- n = 2
-- p = 3
+Since
 
-In this case:
+- `10 ≡ 1 (mod 9)`
 
-- S(2) = 2
-- 2 * S(n) - p = 4 - 3 = 1
-- n mod p = 2
+and congruence is preserved under powers, we get
 
-So:
-1 ≠ 2 (mod 3)
+- `10^i ≡ 1 (mod 9)` for all `i >= 0`
 
-This shows that the initial relation is not universally valid, and any correct formulation must include additional conditions or restrictions.
+hence
 
-Contents
+- `n ≡ S(n) (mod 9)`.
 
-- note.tex → LaTeX source file of the notes
-- note.pdf → compiled version (readable)
+## Exploratory direction
 
-Status
+This note also explores congruences of the form:
 
-This work is exploratory and may contain inaccuracies or incomplete generalizations.
-It is shared as a starting point for discussion and further investigation.
+- `2S(n) ≡ n (mod p)`
 
-Author
+or equivalently
+
+- `2S(n) - p ≡ n (mod p)`
+
+for suitable integers `n` and moduli `p`.
+
+## Important remark
+
+These relations do **not** hold in general for all `n` and `p`.
+
+For example, with `n = 2` and `p = 3`:
+
+- `S(2) = 2`
+- `2S(2) = 4`
+- `4 ≡ 1 (mod 3)`, while `2 ≡ 2 (mod 3)`
+
+so the congruence fails.
+
+Therefore, the non-classical relation should be understood as an exploratory pattern, not as a general theorem.
+
+## Key idea
+
+By writing `n` in decimal form, one can rewrite the condition in terms of the digits as a weighted congruence involving coefficients of the form:
+
+- `2 - 10^i`
+
+This leads naturally to modular and periodic considerations, especially when `gcd(10, p) = 1`.
+
+## Contents
+
+- `note.tex` — LaTeX source
+- `note.pdf` — compiled version
+
+## Note
+
+This repository is exploratory in nature. It does not claim a new general theorem, but documents a mathematical investigation starting from an informal intuition.
+
+## Author
 
 Matteo Calvigioni
-
-Notes
-
-If you are interested in modular arithmetic or digit-based properties of integers, feel free to take inspiration or suggest improvements.
